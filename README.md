@@ -21,7 +21,10 @@ mvn compile quarkus:dev
 - ./mvnw quarkus:add-extension -Dextensions='hibernate-validator'
 - ./mvnw quarkus:add-extension -Dextensions='jdbc-h2,hibernate-orm,hibernate-orm-panache,resteasy-jsonb'
 
-
+## Aula 14 - Criando POST de Users
+- **@Path("/\<url>")** - torna a classe em um controlador rest.
+- CONFIGURAR POSTMAN COM DADOS DO INSOMNIA
+- TROCAR CLASSE DTO POR CLASSE RECORD. 
 
 
 
