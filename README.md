@@ -86,8 +86,13 @@ private Long id;
 - **@DELETE** - informa que a operação será de exclusão do registro. Método que usa *@DELETE* precisa de **@Transactional**.
 - **@Path("{id}")** - quando executar um DELETE para a url passa mais um parâmetro com ela indicando o id do registro que será excluído do BD (ver método deleteUser).
 - **@PUT** - informa que iremos alterar um registro no BD. É idempotente, ou seja, sempre que atualizar um registro com os mesmo dados, sempre haverá a mesma resposta. É usado em conjunto com **@Path("{id}")** (ver método updateUser). Método que usa *@PUT* precisa de **@Transactional**.
-- 
+- Ao executar um *@PUT* não é necessário chamar dentro do escopo do método atualizador qualquer método para commitar a atualização, pois o commmit é executado automaticamente assim que o método atualizador finalizar (ver método updateUser).
 
+## Aula 21 - Utilizando os repositórios do Panache
+- Com a abordagem de usar repositórios, temos uma classe separada e específica para manipular a entidade com os métodos do Panache Entity. Assim a entidade torna-se somente uma representação da tabela do BD, impedindo que seja atribuído funções que não são das entidades (Ver classe UserRepository).
+- Ao usar essa abordagem, não precisamos estender a entidade a PanacheEntityBase.
+- @**ApplicationScoped** - usada na classe repository, a qual cria uma instância da classe repositório dentro do contexto da aplicação, no conteiner de injeção de dependências para poder usar onde quiser. Funciona como um **Singleton**, não importa quantos usuários estão acessando a API, haverá somente uma classe executando as operações p/todos (Ver classe UserRepository).
+- **@Inject** - executa a injeção de dependência no construtor da classe (Ver classe UserResource).
 
 
 
