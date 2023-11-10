@@ -112,7 +112,18 @@ Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(user
 - **validator.validate(userRequest)** retorna um Set de ConstraintViolation com informações sobre os campos que estão inválidos, os quais podemos tratar da forma que quisermos.
 - **violations.stream().findAny().get()** temos um stream de erros, os quais podemos tratar um por um, então o método encontra qualquer erro e retorna. Em seguida armazenamos a mensagem retornada (a qual foi criada no record CreateUserRequest) e retornamos como resposta da aplicação.
 
-
+## Aula 23 - Retornando um objeto de erro padrão
+- Criamos uma classe para representar o erro, no qual armazenará o campo do erro e a mensagem do erro associada ao campo (ver classe FieldError).
+- Criamos uma classe para representar um objeto de retorno quando temos o erro, retornando um json com a mensagem e um array dentro do json contendo cada um dos erros, com campo e mensagem (ver classe ResponseError).
+- método **createFromValidaton** mapeia o **ConstraintViolation** para **FieldError**, mapeando todos (ver classe ResponseError):
+```java
+violations.stream()
+			.map( cv -> new FieldError(cv.getPropertyPath().toString(), cv.getMessage()))
+			.collect(Collectors.toList());
+```
+- **cv.getPropertyPath().toString()** pega a propriedade que tentou validar, que contém o erro.
+- **cv.getMessage()** pega a mensagem de erro.
+- **collect(Collectors.toList())** captura cada *fielError* e adiciona a uma lista.
 
 
 
