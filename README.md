@@ -22,9 +22,11 @@ mvn compile quarkus:dev
 - ./mvnw quarkus:add-extension -Dextensions='jdbc-h2,hibernate-orm,hibernate-orm-panache,resteasy-jsonb'
 
 ## Aula 14 - Criando POST de Users
-- **@Path("/\<url>")** - torna a classe em um controlador rest.
-- CONFIGURAR POSTMAN COM DADOS DO INSOMNIA
-- TROCAR CLASSE DTO POR CLASSE RECORD. 
+- **@Path("/\<url>")** - torna a classe em um controlador REST.
+
+## Aula 15 - Recebendo e devolvendo objetos JSON
+- **@Consumes(MediaType.APPLICATION_JSON)** - informa que tipo de dado será recebido, no caso receberá JSON no corpo da requisição, ou seja consome JSON.
+- **@Produces(MediaType.APPLICATION_JSON)** - informa que tipo de dado será retornado, no caso receberá JSON no corpo da resposta, ou seja retorna JSON.
 
 
 
