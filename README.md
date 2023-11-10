@@ -23,6 +23,7 @@ mvn compile quarkus:dev
 
 ## Aula 14 - Criando POST de Users
 - **@Path("/\<url>")** - torna a classe em um controlador REST.
+- **@POST** - informa que íremos salvar um registro no BD. NÃO é idempotente, ou seja, sempre que criar um registro, a resposta será diferente.
 
 ## Aula 15 - Recebendo e devolvendo objetos JSON
 - **@Consumes(MediaType.APPLICATION_JSON)** - informa que tipo de dado será recebido, no caso receberá JSON no corpo da requisição, ou seja consome JSON.
@@ -79,9 +80,13 @@ private Long id;
 ### Observações ao usar Panache Entity
 - Na classe controladora UserResource precisamos usar a annotation **@Transactional** sobre o método que irá fazer alterações no BD para que seja aberta uma transação com BD (Ver o método createUser).
 - Há vários métodos para se usar para a classe que estendeu a Panache Entity, como o método *.persist()* para salvar no BD o user (ver método createUser) ou mesmo *.findAll()* que recupera todos os registros da tabela Users (ver método listAllUsers).
+- **@GET** - informa que a operação será para recuperar registro(s) no BD.
 
-
-
+## Aula 20 - Concluíndo as operações
+- **@DELETE** - informa que a operação será de exclusão do registro. Método que usa *@DELETE* precisa de **@Transactional**.
+- **@Path("{id}")** - quando executar um DELETE para a url passa mais um parâmetro com ela indicando o id do registro que será excluído do BD (ver método deleteUser).
+- **@PUT** - informa que iremos alterar um registro no BD. É idempotente, ou seja, sempre que atualizar um registro com os mesmo dados, sempre haverá a mesma resposta. É usado em conjunto com **@Path("{id}")** (ver método updateUser). Método que usa *@PUT* precisa de **@Transactional**.
+- 
 
 
 
