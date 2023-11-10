@@ -94,6 +94,23 @@ private Long id;
 - @**ApplicationScoped** - usada na classe repository, a qual cria uma instância da classe repositório dentro do contexto da aplicação, no conteiner de injeção de dependências para poder usar onde quiser. Funciona como um **Singleton**, não importa quantos usuários estão acessando a API, haverá somente uma classe executando as operações p/todos (Ver classe UserRepository).
 - **@Inject** - executa a injeção de dependência no construtor da classe (Ver classe UserResource).
 
+## Aula 22 - Aplicando validações com Hibernate Validator (Bean Validator)
+- No [link](https://quarkus.io/guides/validation) indica algumas configurações a se fazer, como instalar a extensão, atualizar o pom.xml, como acessar o validador, etc.
+- Para as annotations abaixo ver record CreateUserRequest:
+  - **@NotBlank(message = "Name is required.")** - verifica se o campo é nulo ou vazio, se acontecer algum dos dois, não deixa passar. 
+  - **@NotNull(message = "Age is required.")** - verifica se o campo é nulo, se for, não deixa passar.
+
+- Na classe controladora, no método createUser:
+```java
+Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(userRequest);
+	if (!violations.isEmpty() ) {
+		ConstraintViolation<CreateUserRequest> erro = violations.stream().findAny().get();
+		String errorMessage = erro.getMessage();
+		return Response.status(400).entity(errorMessage).build();
+	}
+```
+- **validator.validate(userRequest)** retorna um Set de ConstraintViolation com informações sobre os campos que estão inválidos, os quais podemos tratar da forma que quisermos.
+- **violations.stream().findAny().get()** temos um stream de erros, os quais podemos tratar um por um, então o método encontra qualquer erro e retorna. Em seguida armazenamos a mensagem retornada (a qual foi criada no record CreateUserRequest) e retornamos como resposta da aplicação.
 
 
 

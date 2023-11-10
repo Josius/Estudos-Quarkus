@@ -4,6 +4,9 @@ import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Valid;
+import jakarta.validation.Validator;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -11,20 +14,32 @@ import pessoal.estudos.quarkus.quarkussocial.domain.model.User;
 import pessoal.estudos.quarkus.quarkussocial.domain.repository.UserRepository;
 import pessoal.estudos.quarkus.quarkussocial.rest.dto.CreateUserRequest;
 
+import java.util.Set;
+
 @Path("/users")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class UserResource {
 
     private UserRepository userRepository;
+    private Validator validator;
 
     @Inject
-    public UserResource(UserRepository userRepository){
+    public UserResource(UserRepository userRepository, Validator validator){
         this.userRepository = userRepository;
+        this.validator = validator;
     }
     @POST
     @Transactional
     public Response createUser(CreateUserRequest userRequest) {
+
+        Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(userRequest);
+        if (!violations.isEmpty() ) {
+            ConstraintViolation<CreateUserRequest> erro = violations.stream().findAny().get();
+            String errorMessage = erro.getMessage();
+            return Response.status(400).entity(errorMessage).build();
+        }
+
         User user = new User();
         user.setAge(userRequest.age());
         user.setName(userRequest.name());
