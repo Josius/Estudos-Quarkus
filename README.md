@@ -54,7 +54,8 @@ quarkus.datasource.jdbc.max-size=16
 ### Instalando a extensão
 - ./mvnw quarkus:add-extension -Dextensions='jdbc-postgresql'
 
-
+## Aula 18 - Mapeamento da entidade de Users
+- Criamos a classe User com annotations do JPA e Lombok (*@Data, @EqualsAndHashCode, @Entity, @Table, @Id, @GeneratedValue, @EqualsAndHashCode, @Column*)
 
 
 ****
