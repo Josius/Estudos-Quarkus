@@ -57,6 +57,39 @@ quarkus.datasource.jdbc.max-size=16
 ## Aula 18 - Mapeamento da entidade de Users
 - Criamos a classe User com annotations do JPA e Lombok (*@Data, @EqualsAndHashCode, @Entity, @Table, @Id, @GeneratedValue, @EqualsAndHashCode, @Column*)
 
+## Aula 19 - Manipulando entidades com o Panache Entity
+- Panache possuí o EntityManager em sua implementação.
+- Possuí métodos prontos para utilizar.
+  
+### Há duas formas de utilizar 
+- A 1ª é com *extends PanacheEntity*, e desta forma, não precisamos usar o atributo id, pois este é mapeado pela superclasse PanacheEntity. 
+- Libera vários métodos prontos para utilizar, pois estende da PanacheEntityBase, a qual é possuídora dos métodos.
+```java
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@EqualsAndHashCode.Include
+private Long id;
+```
+- Entretanto usar da forma acima pode gerar algum erro, pois estamos delegando a geração da id para o BD, por exemplo, PostgreSQL usará um BigSerial, MySQL usará o auto_increment, etc.. Ao extender a PanacheEntity, se delegar ao BD a geração do id ocorrerá o erro: **Caused by: org.postgresql.util.PSQLException: ERROR: relation "alguma_coisa_seq" does not exist
+  Posição: 16** que ocorre pela superclasse PanacheEntity não ter uma indicação de delegar ao BD a geração do id.
+
+- A 2ª é com **extends PanacheEntityBase** a qual permite o uso das annotation para id, como exemplo acima, evitando assim o erro descrito.
+- Libera vários métodos prontos para utilizar, pois é a possuídora dos métodos.
+
+### Observações ao usar Panache Entity
+- Na classe controladora UserResource precisamos usar a annotation **@Transactional** sobre o método que irá fazer alterações no BD para que seja aberta uma transação com BD (Ver o método createUser).
+- Há vários métodos para se usar para a classe que estendeu a Panache Entity, como o método *.persist()* para salvar no BD o user (ver método createUser) ou mesmo *.findAll()* que recupera todos os registros da tabela Users (ver método listAllUsers).
+
+
+
+
+
+
+
+
+
+
+
 
 ****
 ****
