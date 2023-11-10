@@ -28,9 +28,31 @@ mvn compile quarkus:dev
 - **@Consumes(MediaType.APPLICATION_JSON)** - informa que tipo de dado será recebido, no caso receberá JSON no corpo da requisição, ou seja consome JSON.
 - **@Produces(MediaType.APPLICATION_JSON)** - informa que tipo de dado será retornado, no caso receberá JSON no corpo da resposta, ou seja retorna JSON.
 
+## Aula 17 - Criando a tabela de Users e configurando a conexão
+### Criando BD e tabela Users
+```sql
+CREATE DATABASE quarkus_social;
 
+create table USERS(
+	id bigserial PRIMARY KEY,
+	name varchar(100) not null,
+	age integer not null
+);
+```
 
+### Configurando a conexão
+Neste [link](https://quarkus.io/guides/datasource#configure-a-jdbc-datasource) temos a explicação da configuração abaixo:
+```
+quarkus.datasource.db-kind=postgresql 
+quarkus.datasource.username=<your username>
+quarkus.datasource.password=<your password>
 
+quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5432/hibernate_orm_test
+quarkus.datasource.jdbc.max-size=16
+```
+
+### Instalando a extensão
+- ./mvnw quarkus:add-extension -Dextensions='jdbc-postgresql'
 
 
 
