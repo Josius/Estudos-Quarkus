@@ -140,6 +140,21 @@ violations.stream()
 ## Aula 28 - Implementando o método de realizar postagens
 - Sem muita inovação, fizemos como antes, criamos um repository, uma entity, uma tabela no BD, etc..
 
+## Aula 29 - Concluíndo a API de postagem
+- Novamente, sem muita difereça do que já vimos. Uma nota, o método **Sort.Direction.Descending** presentes em **listPost** da classe controladora **PostResource** permite ordenar a lista de retorno do mais recente ao mais antigo.
+
+## Aula 30 - 
+
+
+
+
+
+
+
+
+
+
+
 
 ****
 ****
