@@ -30,6 +30,13 @@ public class FollowerResource {
     public Response followUser(
             @PathParam("userId") Long userId, FollowerRequest followerRequest){
 
+        if(userId.equals(followerRequest.followerId())){
+
+            return Response.status(Response.Status.CONFLICT)
+                    .entity("You can't follow yourself.")
+                    .build();
+        }
+
         User user = userRepository.findById(userId);
 
         if(user == null) {
@@ -39,7 +46,7 @@ public class FollowerResource {
         User follower = userRepository.findById(followerRequest.followerId());
 
         boolean follows = followerRepository.follows(follower, user);
-        
+
         if(!follows) {
 
             var entity = new Follower();

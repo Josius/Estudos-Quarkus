@@ -169,6 +169,20 @@ public boolean follows(User follower, User user) {
 - Ele cria uma query para executar uma busca na tabela Follower e verificar se há um registro com o id do follower e do user, se houver retorna true e em uma cada acima será tratado para impedir que outro registro igual seja adicionado ao BD.
 - O código comentado faz o mesmo que a linha *var params*.
 
+## Aula 34 - Evitando conflito de usuarios
+- Evitando que um usuário torne-se *follower* de si próprio.
+```java
+public Response followUser( @PathParam("userId") Long userId, FollowerRequest followerRequest ){
+	if(userId.equals(followerRequest.followerId())){
+		return Response.status(Response.Status.CONFLICT)
+				.entity("You can't follow yourself.")
+				.build();
+	}
+...
+}
+```
+
+
 
 
 
