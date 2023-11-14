@@ -146,6 +146,7 @@ violations.stream()
 ## Aula 31 - Criando a Tabela e as classes necessárias para API
 - Criamos a tabela de seguidores (followers), a entidade, o repository, o resource com as annotation necessárias e injeções de dependências. 
 
+## Aula 32 - Implementando o método de seguir um usuário
 
 
 
