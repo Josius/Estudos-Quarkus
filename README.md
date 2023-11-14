@@ -143,7 +143,8 @@ violations.stream()
 ## Aula 29 - Concluíndo a API de postagem
 - Novamente, sem muita difereça do que já vimos. Uma nota, o método **Sort.Direction.Descending** presentes em **listPost** da classe controladora **PostResource** permite ordenar a lista de retorno do mais recente ao mais antigo.
 
-## Aula 30 - 
+## Aula 31 - Criando a Tabela e as classes necessárias para API
+- Criamos a tabela de seguidores (followers), a entidade, o repository, o resource com as annotation necessárias e injeções de dependências. 
 
 
 
