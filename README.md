@@ -125,7 +125,12 @@ violations.stream()
 - **cv.getMessage()** pega a mensagem de erro.
 - **collect(Collectors.toList())** captura cada *fielError* e adiciona a uma lista.
 
-
+## Aula 24 - Alterando os códigos de status para mais específicos
+- Trocamos os códigos de retorno de requisições para outros:
+  - **POST** - *201 Created* para sucesso na criação de um usuário e *422 Unprocessable Entity* para quando envíamos uma requisição com algum dado faltando.
+  - **GET** - não foi alterado.
+  - **DELETE** - *204 No Content* para sucesso em deletar um usuário e continuou *404 Not Found* para requisição com id errado.
+  - **PUT** - *204 No Content* para sucesso em atualizar um usuário e  continuou *404 Not Found* para requisição com id errado.
 
 
 
