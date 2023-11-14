@@ -132,6 +132,11 @@ violations.stream()
   - **DELETE** - *204 No Content* para sucesso em deletar um usuário e continuou *404 Not Found* para requisição com id errado.
   - **PUT** - *204 No Content* para sucesso em atualizar um usuário e  continuou *404 Not Found* para requisição com id errado.
 
+[Link status code](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status)
+
+## Aula 27 - Criando o Resource de Posts e os endpoints
+- Criamos uma classe controladora para Post, mas ela é um subrecurso de Users, logo, a uri é *@Path("/users/{userId}/posts")*.
+
 
 
 ****
