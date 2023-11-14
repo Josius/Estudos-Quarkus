@@ -137,6 +137,8 @@ violations.stream()
 ## Aula 27 - Criando o Resource de Posts e os endpoints
 - Criamos uma classe controladora para Post, mas ela é um subrecurso de Users, logo, a uri é *@Path("/users/{userId}/posts")*.
 
+## Aula 28 - Implementando o método de realizar postagens
+- Sem muita inovação, fizemos como antes, criamos um repository, uma entity, uma tabela no BD, etc..
 
 
 ****
