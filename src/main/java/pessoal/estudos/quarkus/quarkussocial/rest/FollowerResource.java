@@ -1,6 +1,7 @@
 package pessoal.estudos.quarkus.quarkussocial.rest;
 
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -25,6 +26,7 @@ public class FollowerResource {
     }
 
     @PUT
+    @Transactional
     public Response followUser(
             @PathParam("userId") Long userId, FollowerRequest followerRequest){
 
@@ -36,11 +38,17 @@ public class FollowerResource {
 
         User follower = userRepository.findById(followerRequest.followerId());
 
-        var entity = new Follower();
-        entity.setUser(user);
-        entity.setFollower(follower);
+        boolean follows = followerRepository.follows(follower, user);
+        
+        if(!follows) {
 
-        followerRepository.persist(entity);
+            var entity = new Follower();
+            entity.setUser(user);
+            entity.setFollower(follower);
+
+            followerRepository.persist(entity);
+        }
+
 
         return Response.status(Response.Status.NO_CONTENT).build(); 
     }

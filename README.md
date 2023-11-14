@@ -147,7 +147,27 @@ violations.stream()
 - Criamos a tabela de seguidores (followers), a entidade, o repository, o resource com as annotation necessárias e injeções de dependências. 
 
 ## Aula 32 - Implementando o método de seguir um usuário
+- Vamos verificar se o follower já está seguindo o usuário, evitando assim que seja criado um novo registro com mesmos dados.
 
+## Aula 33 - Concluindo o PUT de followers
+- O código abaixo se encontra em **FollowerRepository**:
+```java
+public boolean follows(User follower, User user) {
+
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("follower", follower);
+//        params.put("user", user);
+
+	var params = Parameters.with("follower", follower).and("user", user).map();
+
+	PanacheQuery<Follower> query = find("follower = :follower and user = :user", params);
+	Optional<Follower> result = query.firstResultOptional();
+
+	return result.isEmpty();
+}
+```
+- Ele cria uma query para executar uma busca na tabela Follower e verificar se há um registro com o id do follower e do user, se houver retorna true e em uma cada acima será tratado para impedir que outro registro igual seja adicionado ao BD.
+- O código comentado faz o mesmo que a linha *var params*.
 
 
 
