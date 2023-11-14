@@ -10,6 +10,10 @@ import pessoal.estudos.quarkus.quarkussocial.domain.model.User;
 import pessoal.estudos.quarkus.quarkussocial.domain.repository.FollowerRepository;
 import pessoal.estudos.quarkus.quarkussocial.domain.repository.UserRepository;
 import pessoal.estudos.quarkus.quarkussocial.rest.dto.FollowerRequest;
+import pessoal.estudos.quarkus.quarkussocial.rest.dto.FollowerResponse;
+import pessoal.estudos.quarkus.quarkussocial.rest.dto.FollowersPerUserResponse;
+
+import java.util.stream.Collectors;
 
 @Path("/users/{userId}/followers")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -38,13 +42,11 @@ public class FollowerResource {
         }
 
         User user = userRepository.findById(userId);
-
         if(user == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
         User follower = userRepository.findById(followerRequest.followerId());
-
         boolean follows = followerRepository.follows(follower, user);
 
         if(!follows) {
@@ -58,5 +60,26 @@ public class FollowerResource {
 
 
         return Response.status(Response.Status.NO_CONTENT).build(); 
+    }
+
+    @GET
+    public Response listFolloweres(@PathParam("userId") Long userId) {
+
+        User user = userRepository.findById(userId);
+        if(user == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        var list = followerRepository.findByUser(userId);
+        FollowersPerUserResponse responseObject = new FollowersPerUserResponse();
+        responseObject.setFollowersCount(list.size());
+
+        var followersList = list.stream()
+                .map(FollowerResponse::new)
+                .collect(Collectors.toList());
+
+        responseObject.setContent(followersList);
+
+        return Response.ok(responseObject).build();
     }
 }

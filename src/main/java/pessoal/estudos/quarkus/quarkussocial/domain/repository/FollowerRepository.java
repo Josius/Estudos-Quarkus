@@ -9,6 +9,7 @@ import pessoal.estudos.quarkus.quarkussocial.domain.model.User;
 
 import java.lang.reflect.Parameter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -23,5 +24,10 @@ public class FollowerRepository implements PanacheRepository<Follower> {
         Optional<Follower> result = query.firstResultOptional();
 
         return result.isPresent();
+    }
+
+    public List<Follower> findByUser(Long userId) {
+        PanacheQuery<Follower> query = find("user.id", userId);
+        return query.list();
     }
 }

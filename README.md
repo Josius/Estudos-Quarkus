@@ -182,6 +182,9 @@ public Response followUser( @PathParam("userId") Long userId, FollowerRequest fo
 }
 ```
 
+## Aula 35 - Implementando o GET de Followers
+- Criamos as classes *FollowerResponse* e *FollowersPerUserResponse*, o método *findByUser* para retornar todos os *followers* e o método *listFolloweres* para listar todos os *followers*.
+
 
 
 
