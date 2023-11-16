@@ -185,7 +185,9 @@ public Response followUser( @PathParam("userId") Long userId, FollowerRequest fo
 ## Aula 35 - Implementando o GET de Followers
 - Criamos as classes *FollowerResponse* e *FollowersPerUserResponse*, o método *findByUser* para retornar todos os *followers* e o método *listFolloweres* para listar todos os *followers*.
 
-
+## Aula 36 - Implementando o método para deixar de seguir um usuário
+- **@QueryParam**: para passar um parâmetro pela url após o símbolo '?'. Usado com *GET* e *DELETE*.
+- Exemplode de requisição: *http://localhost/users/4/followers?followerId=8*
 
 
 
