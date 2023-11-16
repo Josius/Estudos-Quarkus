@@ -189,12 +189,15 @@ public Response followUser( @PathParam("userId") Long userId, FollowerRequest fo
 - **@QueryParam**: para passar um parâmetro pela url após o símbolo '?'. Usado com *GET* e *DELETE*.
 - Exemplode de requisição: *http://localhost/users/4/followers?followerId=8*
 
-
 ## Aula 37 - Restrigindo o acesso aos posts
 - Só poderá visualizar as postagens de um certo usuário se você for um seguidor dele.
 - Faremos isso via header com a annotation **@HeaderParam**.
 - Ver método *listPost* na classe **PostResource**.
 
+## Aula 38 - Configurando o ambiente para os testes
+- Neste [link](https://quarkus.io/guides/config-reference#default-profiles) podemos ver os profiles para dev, test e prod. Cada um com uma funcionalidade diferente. Também é possível criar outros profiles.
+- No arquivo **application.properties** iremos realizar a configuração para o profile de test.
+- Iremos usar um banco em memória para executar os testes.
 
 
 
