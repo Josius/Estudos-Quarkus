@@ -190,6 +190,10 @@ public Response followUser( @PathParam("userId") Long userId, FollowerRequest fo
 - Exemplode de requisição: *http://localhost/users/4/followers?followerId=8*
 
 
+## Aula 37 - Restrigindo o acesso aos posts
+- Só poderá visualizar as postagens de um certo usuário se você for um seguidor dele.
+- Faremos isso via header com a annotation **@HeaderParam**.
+- Ver método *listPost* na classe **PostResource**.
 
 
 
