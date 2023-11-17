@@ -354,3 +354,13 @@ public void createPostTest(){
 - Para cada caso ver, respectivamente, os seguintes testes da classe **FollowerResourceTest**:
   - **Aula 50** - *userNotFoundWhenUnfollowingAUserTest*
   - **Aula 50** - *unfollowUserTest*
+
+# Aula 51 - Documentando a API com Swagger UI
+- No [link](https://quarkus.io/guides/openapi-swaggerui) indica como ativar o swagger da aplicação.
+- 1º precisamos instalar uma [extensão](https://quarkus.io/guides/openapi-swaggerui).
+- 2º adicionamos a seguinte propriedade no arquivo *application.properties*.
+  - **quarkus.swagger-ui.always-include=true**
+- 3º em seguida subimos a aplicação com *./mvnw quarkus:dev*.
+- 4º acessamos o link *http://localhost:8080/q/swagger-ui/* para verificarmos a documentação da API.
+- Dessa forma podemos usar o swagger para executar testes, como no Postman.
+- Também há a possibilidade de melhorar o swagger.
