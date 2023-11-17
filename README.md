@@ -335,3 +335,13 @@ public void createPostTest(){
   - **Aula 47** - *sameUserAsFollowerTest*
   - **Aula 47** - *userNotFoundWhenTryingToFollowTest*
   - **Aula 48** - *followUserTest*
+
+# Aula 49 - Testes de listagem de seguidores
+- Testando a API de **FollowerResource-listFollowers**.
+- Temos dois casos:
+  - 1º para quando não encontramos o *user* no BD, pois seu id é inválido.
+  - 2º para quando é encontrado o *user* e retornamos a lista de seguidores.
+- Para cada caso ver, respectivamente, os seguintes testes da classe **FollowerResourceTest**:
+  - **Aula 49** - *userNotFoundWhenListingFollowersTest*
+  - **Aula 49** - *listFollowersTest*
+- *userNotFoundWhenListingFollowersTest* é semelhante ao teste *userNotFoundWhenTryingToFollowTest*, só que ao invés de usar um *.put()* usamos um *.get()* e não passamos o *var body*.
