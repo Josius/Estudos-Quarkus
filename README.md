@@ -258,3 +258,24 @@ public void createUserValidationErrorTest(){
 - Com a mesma lógica que o teste da aula 39 mas passando os valores do objeto como nulos.
 - Note que o código comentado é para verificar a mensagem de erro.
 
+# Aula 41 - Realizando Testes ordenados
+- Testando para retornar todos os usuários:
+```java
+@Test
+@DisplayName("should list all users")
+public void listAllUsersTest(){
+	given()
+		.contentType(ContentType.JSON)
+	.when()
+		.get(apiURL)
+	.then()
+		.statusCode(200)
+		.body("size()", Matchers.is(1));
+} 
+```
+- Explicando acima, criamos um cenário para url */users* e quando executar o get, é necessário receber o código de estado 200 e o tamanho do vetor deverá ter 1 elemento.
+- Da forma como está o método poderá ocorrer um erro pois estamos sem usuários no BD.
+- Para usar o método da aula 39 e adicionar um usuário no BD e ter a certeza que este teste irá funcionar, podemos usar a annotation **@TestMethodOrder(MethodOrderer.OrderAnnotation.class)** na classe de teste, o qual informa que será utilizadas annotations de ordenação
+- Em seguida, usamos a annotation **@Order(número_que_indica_a_ordem)** a qual determinará a ordem de execução dos métodos.
+- Ver classe **UserResourceTest**.
+
