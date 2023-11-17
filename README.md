@@ -1,4 +1,7 @@
 # quarkus-social
+
+## [Código fonte](https://github.com/cursodsousa/Quarkus-social/tree/9e43c0cc05f8dd7f9ac82b68bc46834f7d042c9c)
+
 ## Aula 11 - criar projeto quarkus com maven
 - Em [Using our Tooling - how to use Maven as a build tool](https://quarkus.io/guides/maven-tooling) encontra-se o passo-a-passo para criar um projeto quarkus com maven.
 - No caso, o comando abaixo fará o download de vários pacotes necessários para criar o projeto:
@@ -307,7 +310,7 @@ public void createPostTest(){
 - Muito semelhante ao método anterior, mas com a diferença que criamos uma variável interna para passar um id inexistente e o código de estado é 404.
 
 # Aula 44 - Definindo os casos de teste da lista de posts
-- Testando a API de **PostResource-listPosts**
+- Testando a API de **PostResource-listPosts**.
 - Temos 5 casos:
   - 1º para o caso em que o usuário enviado não é válido.
   - 2º para o caso em que é esquecido de enviar o *followerId* no header.
@@ -315,8 +318,20 @@ public void createPostTest(){
   - 4º para o caso em que o *follower* não segue o *user*.
   - 5º para o caso em que está tudo certo.
 - Para cada caso ver, respectivamente, os seguintes testes da classe **PostResourceTest**:
-  - *listPostUserNotFoundTest*
-  - *listPostFollowerHeaderNotSendTest*
-  - *listPostFollowerNotFoundTest*
-  - *listPostNotAFollower*
-  - *listPostsTest*
+  - **Aula 45** - *listPostUserNotFoundTest*
+  - **Aula 45** - *listPostFollowerHeaderNotSendTest*
+  - **Aula 45** - *listPostFollowerNotFoundTest*
+  - **Aula 46** - *listPostNotAFollower*
+  - **Aula 46** - *listPostsTest*
+
+# Aula 47 Testes na API de Followers
+- Semelhante ao classe de teste de **PostResource**, usamos as annotations *TestHTTPEndpoint*, *beforeEach* com um método *setUp*, 
+- Testando a API de **FollowerResource-followUser**.
+- Temos 3 casos:
+  - 1º para o caso do id do *follower* for igual ao id do *user*.
+  - 2º para o caso de um *follower* for seguir um *user* que não existe.
+  - 3º para o caso de um *follower* for seguir um *user* ao qual ele não segue.
+- Para cada caso ver, respectivamente, os seguintes testes da classe **FollowerResourceTest**:
+  - **Aula 47** - *sameUserAsFollowerTest*
+  - **Aula 47** - *userNotFoundWhenTryingToFollowTest*
+  - **Aula 48** - *followUserTest*
