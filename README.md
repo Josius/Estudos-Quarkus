@@ -301,3 +301,8 @@ public void createPostTest(){
 		.statusCode(201);
 }
 ```
+
+# Aula 43 - Teste de usuário inexistente ao tentar fazer uma postagem
+- Agora será testado o 2º caso, quando não há o usuário no BD e retorna erro.
+- Muito semelhante ao método anterior, mas com a diferença que criamos uma variável interna para passar um id inexistente e o código de estado é 404.
+
