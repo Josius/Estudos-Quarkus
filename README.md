@@ -199,6 +199,35 @@ public Response followUser( @PathParam("userId") Long userId, FollowerRequest fo
 - No arquivo **application.properties** iremos realizar a configuração para o profile de test.
 - Iremos usar um banco em memória para executar os testes.
 
+## Aula 39 - Implementando o primeiro teste de API
+- Nas classes de teste precisamos usar a annotation **@QuarkusTest** e **@Test** nos métodos.
+- Testando a API de **Users-createUser** com dois aspectos:
+  - faz validação se os dados estão presentes para salvar no BD, retornando *UNPROCESSABLE_ENTITY_STATUS* se dados estiverem errados.
+  - do contrário, salva usuário e retorna *CREATED* com os dados persisitidos no BD no corpo da requisição.
+- Um explicação do método:
+```java
+@Test
+@DisplayName("should create user successfully")
+public void createUserTest() {
+	var user = new CreateUserRequest("Fulano", 30);
+
+	var response = 
+                given()
+                    .contentType(ContentType.JSON)
+                    .body(user)
+                .when()
+                    .post("/users")
+                .then()
+                    .extract().response();
+	
+	assertEquals(201, response.statusCode());
+    assertNotNull(response.jsonPath().getString("id"));
+}
+```
+- Criamos um usuário e dado um cenário (*given*) ao qual temos um conteúdo (*contentType*) com esse corpo (*body*), quando (*when*) eu fizer um post (*post*) então (*then*), vou extrair a resposta dessa requisição (*extract.response*).
+- Por fim, verificamos se o status code da resposta é 201 e se o campo 'id' está sendo enviado, o que não será nulo.
+
+
 
 
 
