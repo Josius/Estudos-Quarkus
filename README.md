@@ -364,3 +364,26 @@ public void createPostTest(){
 - 4º acessamos o link *http://localhost:8080/q/swagger-ui/* para verificarmos a documentação da API.
 - Dessa forma podemos usar o swagger para executar testes, como no Postman.
 - Também há a possibilidade de melhorar o swagger.
+
+# Aula 52 - Adicionando meta dados na documentação
+- No [link](https://quarkus.io/guides/openapi-swaggerui#providing-application-level-openapi-annotations) temos a opção de ativar uma documentação mais apurada, adicionando metadados:
+```java
+@OpenAPIDefinition(
+tags = {
+		@Tag(name="widget", description="Widget operations."),
+		@Tag(name="gasket", description="Operations related to gaskets")
+},
+info = @Info(
+	title="Example API",
+	version = "1.0.1",
+	contact = @Contact(
+		name = "Example API Support",
+		url = "http://exampleurl.com/contact",
+		email = "techsupport@example.com"),
+	license = @License(
+		name = "Apache 2.0",
+		url = "https://www.apache.org/licenses/LICENSE-2.0.html"))
+)
+```
+- Também há a opção de fazer a configuração do swagger pelo **application.properties**.
+
