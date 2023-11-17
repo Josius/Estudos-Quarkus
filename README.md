@@ -345,3 +345,12 @@ public void createPostTest(){
   - **Aula 49** - *userNotFoundWhenListingFollowersTest*
   - **Aula 49** - *listFollowersTest*
 - *userNotFoundWhenListingFollowersTest* é semelhante ao teste *userNotFoundWhenTryingToFollowTest*, só que ao invés de usar um *.put()* usamos um *.get()* e não passamos o *var body*.
+
+# Aula 50 - Finalizando o módulo de testes
+- Testando a API de **FollowerResource-unfollowUser**.
+- Temos dois casos:
+  - 1º para quando não encontramos o *user* no BD, pois seu id é inválido.
+  - 2º para quando é encontrado o *user* e deletamos a referência de seguidor.
+- Para cada caso ver, respectivamente, os seguintes testes da classe **FollowerResourceTest**:
+  - **Aula 50** - *userNotFoundWhenUnfollowingAUserTest*
+  - **Aula 50** - *unfollowUserTest*
