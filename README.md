@@ -387,3 +387,10 @@ info = @Info(
 ```
 - Também há a opção de fazer a configuração do swagger pelo **application.properties**.
 
+# Aula 53 - Empacotando a aplicação para produção
+- Gerando o arquivo **.jar** para produção:
+  - No terminal, no diretório raiz da aplicação, usar o comando
+  - **./mvnw clean package -DskipTests**
+  - E o arquivo **.jar** se encontra dentro do diretório */target/quarkus-app*, com o nome de **quarkus-run.jar**
+  - Para executá-lo, usamos o comando:
+  - **java -jar ./target/quarkus-app/quarkus-run.jar**
