@@ -259,7 +259,7 @@ public void createUserValidationErrorTest(){
 - Note que o código comentado é para verificar a mensagem de erro.
 
 # Aula 41 - Realizando Testes ordenados
-- Testando para retornar todos os usuários:
+- Testando a API de **Users-listAllUsers**:
 ```java
 @Test
 @DisplayName("should list all users")
@@ -279,3 +279,25 @@ public void listAllUsersTest(){
 - Em seguida, usamos a annotation **@Order(número_que_indica_a_ordem)** a qual determinará a ordem de execução dos métodos.
 - Ver classe **UserResourceTest**.
 
+# Aula 42 - Criando cenário com beforeEach
+- Sobre a annotation **beforeEach**, na classe de teste foi criado um método chamado **setUP** que usa essa annotation. Este método executará antes de todos os testes e criará a base necessária para os teste, como criação de users, posts e followers.
+- Iremos criar testes para a classe **PostResource-savePost**. 
+  - Dois aspectos, um quando não encontra o usuário e outro quando ele encontra e faz a postagem.
+- Com a annotation **@TestHTTPEndpoint(PostResource.class)** na classe de teste definimos qual recurso/API estamos testando, ao qual ele reconhecerá a url, que no caso será *"/users/{userId}/posts"*.
+```java
+@Test
+@DisplayName("should create a post for a user")
+public void createPostTest(){
+	var postRequest = new CreatePostRequest();
+	postRequest.setText("Some text");
+
+	given()
+		.contentType(ContentType.JSON)
+		.body(postRequest)
+		.pathParam("userId", userId)
+	.when()
+		.post()
+	.then()
+		.statusCode(201);
+}
+```
