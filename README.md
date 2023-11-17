@@ -281,7 +281,7 @@ public void listAllUsersTest(){
 
 # Aula 42 - Criando cenário com beforeEach
 - Sobre a annotation **beforeEach**, na classe de teste foi criado um método chamado **setUP** que usa essa annotation. Este método executará antes de todos os testes e criará a base necessária para os teste, como criação de users, posts e followers.
-- Iremos criar testes para a classe **PostResource-savePost**. 
+- Testando a API de **PostResource-savePost**. 
   - Dois aspectos, um quando não encontra o usuário e outro quando ele encontra e faz a postagem.
 - Com a annotation **@TestHTTPEndpoint(PostResource.class)** na classe de teste definimos qual recurso/API estamos testando, ao qual ele reconhecerá a url, que no caso será *"/users/{userId}/posts"*.
 ```java
@@ -306,3 +306,17 @@ public void createPostTest(){
 - Agora será testado o 2º caso, quando não há o usuário no BD e retorna erro.
 - Muito semelhante ao método anterior, mas com a diferença que criamos uma variável interna para passar um id inexistente e o código de estado é 404.
 
+# Aula 44 - Definindo os casos de teste da lista de posts
+- Testando a API de **PostResource-listPosts**
+- Temos 5 casos:
+  - 1º para o caso em que o usuário enviado não é válido.
+  - 2º para o caso em que é esquecido de enviar o *followerId* no header.
+  - 3º para o caso em que é enviado o *follower* mas este *follower* não existe.
+  - 4º para o caso em que o *follower* não segue o *user*.
+  - 5º para o caso em que está tudo certo.
+- Para cada caso ver, respectivamente, os seguintes testes da classe **PostResourceTest**:
+  - *listPostUserNotFoundTest*
+  - *listPostFollowerHeaderNotSendTest*
+  - *listPostFollowerNotFoundTest*
+  - *listPostNotAFollower*
+  - *listPostsTest*
