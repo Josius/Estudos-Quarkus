@@ -394,3 +394,12 @@ info = @Info(
   - E o arquivo **.jar** se encontra dentro do diretório */target/quarkus-app*, com o nome de **quarkus-run.jar**
   - Para executá-lo, usamos o comando:
   - **java -jar ./target/quarkus-app/quarkus-run.jar**
+
+# Aula 54 - Subindo a aplicação com Docker
+- Quarkus já vem pronto para rodar em conteiner.
+- No diretório */src/main/docker* há arquivos para rodar em conteineres. *Dockerfile.jvm* é o arquivo para fazer o deploy.
+- Com base nisso, precisamos executar alguns passos:
+  1. Empacotar a aplicação: **`./mvnw clean package -DskipTests=true`**
+  2. Construir uma imagem: **`docker build -f src/main/docker/Dockerfile.jvm -t quarkus-social:1.0 .`**
+  3. Executar a imagem: **`docker run -i --rm -p 8080:8080 --name quarkus-social-container quarkus-social:1.0`**
+- Na aula, ocorre um problema de acesso à porta 5434 pois estamos usando o PostgreSQL. Para acessá-lo devemos configurá-lo, o que não é explicado no vídeo. Ele usa a opção de comentar a configuração do PostgreSQL e usar o H2 na imagem.
