@@ -10,7 +10,10 @@ Curso voltado para criar uma API de rede social, na qual usuários podem enviar 
 
 ## [Código fonte](https://github.com/cursodsousa/Quarkus-social/tree/9e43c0cc05f8dd7f9ac82b68bc46834f7d042c9c)
 
-## Aula 11 - criar projeto quarkus com maven
+******
+
+# Notas das aulas
+## Aula 11 - Criar projeto quarkus com maven
 - Em [Using our Tooling - how to use Maven as a build tool](https://quarkus.io/guides/maven-tooling) encontra-se o passo-a-passo para criar um projeto quarkus com maven.
 - No caso, o comando abaixo fará o download de vários pacotes necessários para criar o projeto:
 ```bash
