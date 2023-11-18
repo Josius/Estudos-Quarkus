@@ -1,4 +1,11 @@
-# Quarkus Social
+# Estudos sobre Quarkus
+Curso voltado para criar uma API de rede social, na qual usuários podem enviar textos e podem seguir uns aos outros. Utilizamos:
+- Quarkus
+- PostgreSQL
+- JDK 21
+- Maven
+- REST
+
 ## [Link do curso](https://www.udemy.com/course/aprenda-quarkus-e-desenvolva-apis-restful-poderosas-em-java/?utm_source=adwords-intl&utm_medium=udemyads&utm_campaign=LongTail_new_la.PT_cc.BR&utm_content=deal4584&utm_term=_._ag_118044111482_._kw__._ad_680777648132_._de_c_._dm__._pl__._ti_dsa-1131315795588_._li_1001736_._pd__._&gad_source=1&gclid=Cj0KCQiA3uGqBhDdARIsAFeJ5r2RnbO3AekxzTnc-vNVattjRcHebI6LfmtF-AcDHS1wC6_J-Kih25EaAuRtEALw_wcB)
 
 ## [Código fonte](https://github.com/cursodsousa/Quarkus-social/tree/9e43c0cc05f8dd7f9ac82b68bc46834f7d042c9c)
