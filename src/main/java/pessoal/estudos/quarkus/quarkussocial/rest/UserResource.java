@@ -43,8 +43,8 @@ public class UserResource {
         }
 
         User user = new User();
-        user.setAge(userRequest.age());
-        user.setName(userRequest.name());
+        user.setAge(userRequest.getAge());
+        user.setName(userRequest.getName());
 
         userRepository.persist(user);
 
@@ -82,8 +82,8 @@ public class UserResource {
 
         User user = userRepository.findById(id);
         if (user != null) {
-            user.setName(userData.name());
-            user.setAge(userData.age());
+            user.setName(userData.getName());
+            user.setAge(userData.getAge());
             return Response.noContent().build();
         }
 

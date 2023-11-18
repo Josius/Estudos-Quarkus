@@ -17,7 +17,7 @@ mvn compile quarkus:dev
 - Acessar http://localhost:8080/ para ver a página inicial do projeto quarkus pré-configurada.
 - **hot deploy/swap:** atualiza a aplicação sem precisar derrubar ela.
 
-## Aula 12 - listando e adicionando extensões do quarkus ao projeto
+## Aula 12 - Listando e adicionando extensões do quarkus ao projeto
 - 1º modo é ir no site do [maven repository](https://mvnrepository.com/), encontrar a dependência desejada, copiar o código da dependência e colar no pom.xml, no escopo de \<dependecies>.
 - 2º modo é usar o próprio quarkus, os quais são chamadas de extensões na linguagem do quarkus, usando a linha de comando. Veja em [Dealing with extensions](https://quarkus.io/guides/maven-tooling#dealing-with-extensions) os comandos necessários para listar todas as extensões e como instalar uma ou mais extensões com base no id de cada extesão:
 - ./mvnw quarkus:list-extensions
