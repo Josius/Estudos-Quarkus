@@ -1,5 +1,5 @@
 # Estudos sobre Quarkus
-Curso voltado para criar uma API de rede social, na qual usuários podem enviar textos e podem seguir uns aos outros. Utilizamos:
+Curso voltado para criar uma API de rede social, na qual usuários podem enviar textos e seguir uns aos outros. Utilizamos:
 - Quarkus
 - PostgreSQL
 - JDK 21
